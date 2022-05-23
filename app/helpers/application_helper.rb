@@ -1,5 +1,6 @@
 module ApplicationHelper
-    def user_email
-        current_user.email
+    def time_now
+        date = Time.now()
+        "#{date.year} - #{date.month} - #{date.day}"
     end
 end
