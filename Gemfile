@@ -8,7 +8,6 @@ gem 'rails', '~> 6.1.5'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'devise'
-gem 'google-cloud-storage'
 gem 'rails-erd'       #...........................Gem for generate PDF realtionship models.
 gem 'active_storage_validations'      #..........Gem for active storage validations.
 gem 'image_processing'      #....................Gem for display images.
