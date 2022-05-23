@@ -1,2 +1,14 @@
 <h1>Pages#index</h1>
 <p>Find me in app/views/pages/index.html.erb</p>
+<p>
+    <% if  current_user %>
+        <% if current_user.is_basic_role? %>
+            You are a member
+        <% elsif current_user.is_intermediate_role? %>
+            You are a partner
+        <% elsif current_user.is_superior_role? %>
+            You are an admin
+        <% end %>
+    <% end %>    
+</p>
+<br>
