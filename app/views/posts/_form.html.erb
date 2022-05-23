@@ -1,0 +1,14 @@
+<%= form_with model: @post do |form| %>
+    <%= render 'shared/errors', obj: @post %>
+    <div>
+        <%= form.label "Post's title" %>
+        <%= form.text_field :title %>
+    </div>
+    <div>
+        <%= form.label "Post's description" %>
+        <%= form.text_area :body %>
+    </div>
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
