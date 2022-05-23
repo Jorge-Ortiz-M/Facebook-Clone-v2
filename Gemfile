@@ -8,6 +8,27 @@ gem 'rails', '~> 6.1.5'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'devise'
+gem 'google-cloud-storage'
+gem 'rails-erd'       #...........................Gem for generate PDF realtionship models.
+gem 'active_storage_validations'      #..........Gem for active storage validations.
+gem 'image_processing'      #....................Gem for display images.
+gem 'hirb'      #................................Gem for show databases as tables.
+gem 'omniauth'      #............................Gem for adding Omniauth.
+gem 'omniauth-google-oauth2'      #..............Gem for adding Omniauth using Google.
+gem 'omniauth-facebook'       #...................Gem for adding Omniauth using Facebook.
+gem 'omniauth-github'       #.....................Gem for adding Omniauth using Github.
+gem 'omniauth-rails_csrf_protection'      #......Gem for adding Omniauth protection.
+gem 'google-cloud-storage'      #................Gem for storing data in Google Cloud.
+gem 'faker'     #...............................Gem for generate fake data.
+gem 'friendly_id'     #.........................Gem for make URL friendly.
+gem "recaptcha"     #...........................Gem for add recaptcha.
+gem 'ransack'     #.............................Gem for search and filter data.
+gem 'pagy'      #................................Gem for add pagination.
+gem "rolify"      #..............................Gem for add roles.
+gem "pundit"      #..............................Gem for add authorizations.
+gem 'wicked'      #..............................Gem for separate forms.
+gem 'sitemap_generator'     #...................Gem for set sitemaps more secure.
+gem 'devise_invitable'      #....................Gem for send invitations through emails.
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -35,6 +56,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rspec-rails'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
