@@ -1,6 +1,5 @@
 module RolesConcern
     extend ActiveSupport::Concern
-
     def is_basic_role?
         self.role === 'member'
     end

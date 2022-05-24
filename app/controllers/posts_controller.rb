@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
 
     if @post.save
-      redirect_to root_path, notice: "#{@post.user.email}"
+      redirect_to root_path, notice: "Post successfully created."
     else
       render :new, status: :unprocessable_entity
     end

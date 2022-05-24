@@ -5,10 +5,13 @@
         </p>
         <ul>
             <% if current_user %>
-                <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete, class:'nav-link' %></li>
+                <li><%= time_now %></li>
+                <li><%= user_role %></li>
+                <li><%= link_to 'Create post', new_post_path %>
+                <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
             <% else %>
-                <li><%= link_to 'Sign up', new_user_registration_path, class:'nav-link' %></li>
-                <li><%= link_to 'Sign in', new_user_session_path, class:'nav-link' %></li>
+                <li><%= link_to 'Sign up', new_user_registration_path %></li>
+                <li><%= link_to 'Sign in', new_user_session_path %></li>
             <% end %>
         </ul>
     </nav>
