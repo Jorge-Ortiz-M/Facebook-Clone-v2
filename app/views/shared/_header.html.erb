@@ -6,6 +6,7 @@
         <ul>
             <% if current_user %>
                 <li><%= time_now %></li>
+                <li><%= link_to 'Invite a friend', new_user_invitation_path %></li>
                 <li><%= user_role %></li>
                 <li><%= link_to 'Create post', new_post_path %>
                 <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
