@@ -4,8 +4,8 @@ RSpec.describe User, type: :model do
 
     let(:user) {
         User.create(email: 'some@email.com', 
-                password: '123123', 
-                password_confirmation: '123123', 
+                password: 'jorgeo', 
+                password_confirmation: 'anama', 
                 approve: false,
                 role: 'member')
     }
@@ -22,7 +22,16 @@ RSpec.describe User, type: :model do
         expect(user.email.length).to be > 0
     end
 
-    it 'password should have at least 6 characters' do
-        expect(user.password.length).to be >= 6
+    it 'password and password confirmation should be the same' do
+        expect(user.passwords_must_be_equal).to be true
     end
+
+    it 'password should have at least one upper letter' do
+        expect(user.password_upper_letter).to be true
+    end
+
+    it 'password should have at least one number' do 
+        expect(user.password_numbers).to be true
+    end
+
 end
