@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get 'omniauth_test', to: 'home#display_omniauth'
   devise_for :users, controllers: {
                                     omniauth_callbacks: 'users/omniauth_callbacks',
-                                    sessions: 'users/sessions'
+                                    sessions: 'users/sessions',
+                                    invitations: 'users/invitations'
                                   }
   devise_scope :user do
     get 'sign_out' => 'devise/sessions#destroy'
