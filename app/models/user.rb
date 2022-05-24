@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validate :password_upper_letter
   validate :password_numbers
 
-  devise :database_authenticatable, :registerable,
+  devise :invitable, :database_authenticatable, :registerable, :invitable,
     :recoverable, :rememberable, :confirmable, :trackable, :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :github]
 
     def self.from_omniauth(auth)
