@@ -45,5 +45,4 @@ class User < ApplicationRecord
     def password_numbers
       !!password.match(/\p{Number}/) ? true : errors.add(:password, "should have at least one number.")
     end
-
 end
