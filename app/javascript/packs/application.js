@@ -11,7 +11,3 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-$(document).on('turbolinks:load', function () {
-    console.log('Hello');  
-});

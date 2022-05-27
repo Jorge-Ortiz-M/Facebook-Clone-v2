@@ -1,8 +1,4 @@
-<%= form_with model: [@room, Message.new] do |f| %>
-
-    <%= f.label :content %>
-    <%= f.text_field :content %>
-
-    <%= f.submit %>
-
+<%= form_for [@room, Message.new], remote: true do |f| %>
+    <%= f.text_field :content, class: "message-input" %>
+    <%= f.submit class:"btn" %>
 <% end %>

@@ -7,7 +7,8 @@ class MessagesController < ApplicationController
         @message = @room.messages.build(message_params)
         @message.user_id = current_user.id
         @message.save
-        redirect_to room_path(@room)
+        ActionCable.server.broadcast "chat_channel", message: [@message.content, @message.user.email]
+    
     end
 
     private 
