@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :user_rooms
   has_many :chats, through: :user_rooms
   has_many :rooms
+  has_many :messages
 
   before_create :approve_must_be_false
   before_create :role_must_be_member
