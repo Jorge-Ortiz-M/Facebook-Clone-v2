@@ -4,7 +4,11 @@
     <h4>Add users</h4>
     <% @users.each do |user| %>
         <p>
-            <%= user.email %> <%= button_to 'Invite user', add_user_chat_path, method: :post, params: { user: user.id, room: @room.id } %>
+            <%= user.email %> 
+            <%= button_to 'Invite user', 
+                    add_user_chat_path, 
+                    method: :post, 
+                    params: { user: user.id, room: @room.id } if !(UserRoom.validate_presence(user, @room).first.present?) %>
         </p>
     <% end %>
 </div>
