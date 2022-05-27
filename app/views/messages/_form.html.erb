@@ -1,0 +1,9 @@
+<h1>New message</h1>
+<%= form_with model: [@room, Message.new] do |f| %>
+
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+
+    <%= f.submit %>
+
+<% end %>

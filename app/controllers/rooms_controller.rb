@@ -16,6 +16,7 @@ class RoomsController < ApplicationController
 
   def show
     @users = User.all_except(current_user)
+    @message = Message.new
   end
 
   private

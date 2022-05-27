@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2022_05_27_155733) do
   enable_extension "plpgsql"
 
   create_table "messages", force: :cascade do |t|
+    t.string "content"
     t.bigint "user_id", null: false
     t.bigint "room_id", null: false
     t.datetime "created_at", precision: 6, null: false
