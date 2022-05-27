@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  post 'add_user_chat', to: "user_rooms#add_user_chat"
+  delete 'remove_user_chat', to: "user_rooms#remove_user_chat"
+
+  resources :rooms, only: [:create, :show]
   resources :posts, only: [:new, :create, :edit, :update, :destroy]
 
   get 'omniauth_test', to: 'home#display_omniauth'

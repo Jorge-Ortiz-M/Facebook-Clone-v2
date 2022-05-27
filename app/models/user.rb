@@ -2,6 +2,8 @@ class User < ApplicationRecord
   include RolesConcern
 
   has_many :posts, dependent: :destroy
+  has_many :user_rooms
+  has_many :rooms, through: :user_rooms
 
   before_create :approve_must_be_false
   before_create :role_must_be_member
@@ -14,6 +16,8 @@ class User < ApplicationRecord
   validate :passwords_must_be_equal
   validate :password_upper_letter
   validate :password_numbers
+
+  scope :all_except, -> (user) { where.not(id: user.id) }
 
   devise :invitable, :database_authenticatable, :registerable,
     :recoverable, :rememberable, :confirmable, :trackable, :omniauthable, :omniauth_providers => [:facebook, :google_oauth2, :github]

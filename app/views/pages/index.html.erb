@@ -1,4 +1,25 @@
 <h1>Facebook Yorch App</h1>
+
+<div>
+    <h2>Create Room</h2>
+    <%= form_with model: @room do |f| %>
+        <%= f.label "Room's name: " %>
+        <%= f.text_field :name %>
+        <%= f.submit %>
+    <% end %>
+</div>
+
+<% if current_user.rooms.present? %>
+    <div>
+        <h4>Your rooms</h4>
+        <% current_user.rooms.each do |room| %>
+            <p>
+                <%= room.name %> <%= link_to "Go", room_path(room) %>
+            </p>
+        <% end %>
+    </div>
+<% end %>
+
 <div>
     <% @posts.each do |post| %>
         <p>
@@ -8,3 +29,4 @@
         </p>
     <% end %>
 </div>
+ <br>
