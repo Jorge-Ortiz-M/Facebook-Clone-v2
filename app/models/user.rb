@@ -2,10 +2,10 @@ class User < ApplicationRecord
   include RolesConcern
 
   has_many :posts, dependent: :destroy
-  has_many :user_rooms
-  has_many :chats, through: :user_rooms
-  has_many :rooms
-  has_many :messages
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats, through: :user_rooms, source: :room
+  has_many :rooms, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   before_create :approve_must_be_false
   before_create :role_must_be_member

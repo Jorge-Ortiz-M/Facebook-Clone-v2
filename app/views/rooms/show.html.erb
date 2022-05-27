@@ -1,27 +1,41 @@
 <h2><%= @room.name %></h2>
 
-<div>
-    <h4>Add users</h4>
-    <% @users.each do |user| %>
-        <p>
-            <%= user.email %> 
-            <%= button_to 'Invite user', 
-                    add_user_chat_path, 
-                    method: :post, 
-                    params: { user: user.id, room: @room.id } if !(UserRoom.validate_presence(user, @room).first.present?) %>
-        </p>
-    <% end %>
-</div>
+<main class="room">
+    <section class="users-section">
+        <div>
+            <h4>Add users</h4>
+            <% @users.each do |user| %>
+                <p>
+                    <%= user.email %> 
+                    <%= button_to 'Invite user', 
+                        add_user_chat_path, 
+                        method: :post, 
+                        params: { user: user.id, room: @room.id } if !(UserRoom.validate_presence(user, @room).first.present?) %>
+                </p>
+            <% end %>
+        </div>
+        
+        <div>
+            <h4>Participants</h4>
+            <% @room.participants.each do |user| %>
+                <p>
+                    <%= user.email %> <%= button_to 'Remove user', 
+                        remove_user_chat_path, method: :delete, 
+                        params: { user: user.id, room: @room.id } %>
+                </p>
+            <% end %>
+        </div>
+    </section>
 
-<div>
-    <h4>Users in this chat</h4>
-    <% @room.participants.each do |user| %>
-        <p>
-            <%= user.email %> <%= button_to 'Remove user', remove_user_chat_path, method: :delete, params: { user: user.id, room: @room.id } %>
-        </p>
-    <% end %>
-</div>
+    <section class="messages-section">
+        <div class="messages-room">
+            <% @messages.each do |message| %>
+                <b><%= message.user.email %></b>: <%= message.content %>
+            <% end %>
+        </div>
 
-<div>
-    <%= render 'messages/form' %>
-</div>
+        <div class="messages-form">
+            <%= render 'messages/form' %>
+        </div>
+    </section>
+</main>
