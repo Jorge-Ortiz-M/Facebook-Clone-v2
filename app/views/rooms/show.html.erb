@@ -15,7 +15,7 @@
 
 <div>
     <h4>Users in this chat</h4>
-    <% @room.users.each do |user| %>
+    <% @room.participants.each do |user| %>
         <p>
             <%= user.email %> <%= button_to 'Remove user', remove_user_chat_path, method: :delete, params: { user: user.id, room: @room.id } %>
         </p>

@@ -4,11 +4,13 @@ class RoomsController < ApplicationController
   before_action :set_room, only: [:show]
   
   def create
-    @room = Room.new(room_params)
+    @room = current_user.rooms.new(room_params)
     
     if @room.save
-      UserRoom.create(user_id: current_user.id, room_id: @room.id)
+      @user_room = UserRoom.create(user_id: @room.user_id, room_id: @room.id)
       redirect_to room_path(@room), notice: "Room successfully created."
+    else
+      redirect_to root_path, alert: "A room has this name. Please change the Room's name."
     end
   end
 
