@@ -30,7 +30,7 @@
     <section class="messages-section">
         <div class="messages-room">
             <% @messages.each do |message| %>
-                <b><%= message.user.email %></b>: <%= message.content %>
+                <b><%= message.user.email %></b>: <%= message.content %> <br>
             <% end %>
         </div>
 

@@ -9,12 +9,12 @@
     <% end %>
 </div>
 
-<% if current_user.rooms.present? %>
+<% if current_user.chats.present? %>
     <div>
-        <h4>Your rooms</h4>
-        <% current_user.rooms.each do |room| %>
+        <h4>Your chats</h4>
+        <% current_user.chats.each do |chat| %>
             <p>
-                <%= room.name %> <%= link_to "Go", room_path(room) %>
+                <%= chat.name %> <%= link_to "Go", room_path(chat) %>
             </p>
         <% end %>
     </div>
