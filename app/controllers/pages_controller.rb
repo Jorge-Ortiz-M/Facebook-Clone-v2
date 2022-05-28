@@ -5,5 +5,6 @@ class PagesController < ApplicationController
   def index
     @room = Room.new
     @posts = Post.all
+    @post  = Post.new
   end
 end
