@@ -1,7 +1,7 @@
 <main class="room">
     <h2><%= @room.name %></h2>
     <section class="users-section">
-        <% if current_user === @room.user %>
+        <% if admin_room(current_user, @room) %>
             <div>
                 <h4>Add users</h4>
                 <% @users.each do |user| %>
@@ -23,7 +23,7 @@
             <% @room.participants.each do |user| %>
                 <p>
                     <%= user.email %> 
-                    <% if current_user === @room.user && current_user != user %>
+                    <% if admin_room(current_user, @room) && current_user != user %>
                         <%= button_to 'Remove user', 
                             remove_user_chat_path, method: :delete, 
                             params: { user: user.id, room: @room.id } %>
@@ -46,5 +46,13 @@
         <div class="messages-form">
             <%= render 'messages/form' %>
         </div>
+    </section>
+
+    <section>
+        <% if admin_room(current_user, @room) %>
+            <strong>You are the admin</strong>
+        <% else %>
+            <strong>You are not the admin</strong>
+        <% end %>
     </section>
 </main>

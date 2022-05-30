@@ -4,8 +4,8 @@ RSpec.describe User, type: :model do
 
     let(:user) {
         User.create(email: 'some@email.com', 
-                password: 'jorgeo', 
-                password_confirmation: 'anama', 
+                password: 'J0rge123', 
+                password_confirmation: 'J0rge123', 
                 approve: false,
                 role: 'member')
     }
