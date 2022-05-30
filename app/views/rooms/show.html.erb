@@ -1,27 +1,34 @@
-<h2><%= @room.name %></h2>
-
 <main class="room">
+    <h2><%= @room.name %></h2>
     <section class="users-section">
-        <div>
-            <h4>Add users</h4>
-            <% @users.each do |user| %>
-                <p>
-                    <%= user.email %> 
-                    <%= button_to 'Invite user', 
-                        add_user_chat_path, 
-                        method: :post, 
-                        params: { user: user.id, room: @room.id } if !(UserRoom.validate_presence(user, @room).first.present?) %>
-                </p>
-            <% end %>
-        </div>
+        <% if current_user === @room.user %>
+            <div>
+                <h4>Add users</h4>
+                <% @users.each do |user| %>
+                    <% if !(UserRoom.validate_presence(user, @room).first.present?) %>
+                        <p>
+                            <%= user.email %> <br>
+                            <%= button_to 'Invite user', 
+                                add_user_chat_path, 
+                                method: :post, 
+                                params: { user: user.id, room: @room.id } %>
+                        </p>
+                    <% end %>
+                <% end %>
+            </div>
+        <% end %>
         
         <div>
             <h4>Participants</h4>
             <% @room.participants.each do |user| %>
                 <p>
-                    <%= user.email %> <%= button_to 'Remove user', 
-                        remove_user_chat_path, method: :delete, 
-                        params: { user: user.id, room: @room.id } %>
+                    <%= user.email %> 
+                    <% if current_user === @room.user && current_user != user %>
+                        <%= button_to 'Remove user', 
+                            remove_user_chat_path, method: :delete, 
+                            params: { user: user.id, room: @room.id } %>
+                    <% end %>
+
                 </p>
             <% end %>
         </div>

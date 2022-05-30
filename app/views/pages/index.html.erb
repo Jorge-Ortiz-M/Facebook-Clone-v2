@@ -7,14 +7,7 @@
         <%= f.text_field :name %>
         <%= f.submit %>
     <% end %>
-</div>
-
-<h2>
-    New post.
-</h2>
-<%= render 'posts/form' %>
-
-<% if current_user.chats.present? %>
+    <% if current_user.chats.present? %>
     <div>
         <h4>Your chats</h4>
         <% current_user.chats.each do |chat| %>
@@ -24,15 +17,23 @@
         <% end %>
     </div>
 <% end %>
+</div>
 
-<section class="posts-section">
-    <h4>Posts</h4>
-    <% @posts.each do |post| %>
-        <p>
-            <%= post.title %> <br>
-            <%= post.body %> <br>
-            Author: <small><strong><%=post.user.email %></strong></small>
-        </p>
-    <% end %>
-</section>
- <br>
+
+<div>
+    <h2>
+        New post.
+    </h2>
+    <%= render 'posts/form' %>
+
+    <section class="posts-section">
+        <h4>Posts</h4>
+        <% @posts.each do |post| %>
+            <p>
+                <%= post.title %> <br>
+                <%= post.body %> <br>
+                Author: <small><strong><%=post.user.email %></strong></small>
+            </p>
+        <% end %>
+    </section>
+</div>
