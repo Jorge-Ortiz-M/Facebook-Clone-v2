@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :chats, through: :user_rooms, source: :room
   has_many :rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_one :profile
 
   before_create :approve_must_be_false
   before_create :role_must_be_member
